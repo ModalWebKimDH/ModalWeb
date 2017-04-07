@@ -1,0 +1,32 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 13 avr. 2014, 09:14:23
+    Author     : olivierserre
+*/
+@import url(http://fonts.googleapis.com/css?family=Shadows+Into+Light);
+
+[class*="col-"].gris {
+    background-color: #DCF7D2;
+    border:solid 1px black;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.temoignage p{
+    font-family: 'Shadows Into Light', cursive;
+    font-size: x-large;
+}
+
+body{
+    background-color: #DCF7D2;
+}
+
+.jumbotron img
+{
+    width: 346px;
+    height: 450px;
+}
