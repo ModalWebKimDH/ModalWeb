@@ -1,12 +1,27 @@
 <?php
-
+    session_name("sessiondetox" );
+    // ne pas mettre d'espace dans le nom de session !
+    session_start();
+    if (!isset($_SESSION['initiated'])) {
+        session_regenerate_id();
+        $_SESSION['initiated'] = true;
+    }
+    // Décommenter la ligne suivante pour afficher le tableau $_SESSION pour le debuggage
+    //print_r($_SESSION);
 
 require('utilities/utils.php');
 require('utilities/sql.php');
-require('logInOut.php');
-require('printForms.php');
+require ('logInOut.php');
+require ('printForms.php');
 
 
+
+$dbh = Database::connect();
+
+
+//if($_GET["todo"] == "login") {
+//    logIn($dbh);
+//}
  
 
 if(isset($_GET['page'])){
@@ -25,7 +40,11 @@ else{
     $pageTitle='Erreur';
 } 
 
-
+//if($_SESSION["loggedIn"]) {
+    // tout à l'heure on affichera le formulaire de déconnexion
+//} else {
+//    printLoginForm($askedPage);
+//}
 
 
 generateHTMLHeader($pageTitle,'style','bootstrap');
@@ -54,6 +73,7 @@ echo <<<CHAINE_DE_FIN
                                 </ul>
                             </li>
                             <li><a href="index.php?page=contact">Nous contacter</a></li>
+                            <li><a href="index.php?page=calendrier">Calendrier</a></li>   
                             <li><a href="index.php?page=thes">Nos thés</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Nos recettes DétoX<b class="caret"></b></a>
@@ -65,6 +85,7 @@ echo <<<CHAINE_DE_FIN
                             <li><a href="index.php?page=degustations">Dégustations</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
+                            <li><a href="index.php?page=inscription">S'inscrire</a></li>
                             <li><a href="index.php?page=connexion">Connexion</a></li>
                         </ul>
                     </div><!--/.nav-collapse -->
@@ -79,8 +100,12 @@ if ($authorized){
     include('content/content_'.$askedpage.'.php'); 
 }
 else{
-    echo '<p>Désolé, la page demandée n\'existe pas ou n\'est accessible qu\'aux tox.</p>';    
+    echo '<div class="jumbotron">
+                <div class="row">
+                    <p>Désolé, la page demandée n\'existe pas ou n\'est accessible qu\'aux tox.</p>
+                </div>
+            </div>';
+ 
 }
-
 generateHTMLFooter();
 ?>

@@ -1,8 +1,10 @@
 <?php
 
+
+
 function logIn($dbh){
     $login=$_POST["login"];
-    //echo $login;
+    echo $login;
     $mdp=$_POST["password"];
     $user=Utilisateur::getUtilisateur($dbh, $login);
     if( $user != NULL  && Utilisateur::testerMdp($dbh,$login,$mdp)){

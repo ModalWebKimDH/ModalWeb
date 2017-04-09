@@ -1,4 +1,8 @@
 <?php
+
+
+
+
 $page_list = array(
    array(
     "name"=>"welcome",
@@ -35,7 +39,15 @@ $page_list = array(
     array(
     "name"=>"connexion",
     "title"=>"Connexion",
-    "menutitle"=>"Connexion")
+    "menutitle"=>"Connexion"),
+    array(
+    "name"=>"inscription",
+    "title"=>"S'inscrire",
+    "menutitle"=>"S'inscrire"),
+    array(
+    "name"=>"calendrier",
+    "title"=>"Calendrier des inscriptions",
+    "menutitle"=>"Calendrier des inscriptions")
   );
 
 function checkPage($askedpage){
